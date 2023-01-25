@@ -7,7 +7,7 @@
 f32 skf_sign(f32 val);
 f32 skf_abs(f32 val);
 f32 skf_clamp(f32 val, f32 min, f32 max);
-f32 skf_lerp(f32 val, f32 to, f32 amount);
+f32 skf_lerp(f32 left, f32 right, f32 amount);
 
 // ---- Vector2 Functions ----
 
@@ -29,13 +29,28 @@ static inline skf_vec3 skf_vec3_back()
 {
    return (skf_vec3){ 0, 0, 1 };
 }
+static inline skf_vec3 skf_vec3_one()
+{
+   return (skf_vec3){ 1, 1, 1 };
+}
+static inline skf_vec3 skf_vec3_zero()
+{
+   return (skf_vec3){ 0, 0, 0 };
+}
 
 f32 skf_vec3_dot(skf_vec3 left, skf_vec3 right);
 f32 skf_vec3_len(skf_vec3 vec);
+f32 skf_vec3_angle(skf_vec3 left, skf_vec3 right);
 skf_vec3 skf_vec3_normalize(skf_vec3 vec);
 skf_vec3 skf_vec3_cross(skf_vec3 left, skf_vec3 right);
 skf_vec3 skf_vec3_add(skf_vec3 left, skf_vec3 right);
+skf_vec3 skf_vec3_sub(skf_vec3 left, skf_vec3 right);
+skf_vec3 skf_vec3_neg(skf_vec3 vec);
+skf_vec3 skf_vec3_mul(skf_vec3 left, skf_vec3 right);
+skf_vec3 skf_vec3_div(skf_vec3 left, skf_vec3 right);
+skf_vec3 skf_vec3_rcp(skf_vec3 vec);
 skf_vec3 skf_vec3_mul_f32(skf_vec3 vec, f32 scalar);
+skf_vec3 skf_vec3_lerp(skf_vec3 left, skf_vec3 right, f32 amount);
 
 // ---- Vector4 Functions ----
 
@@ -68,6 +83,7 @@ static inline skf_mat4 skf_mat4_identity()
 }
 
 skf_vec4 skf_vec4_mat4_transform(skf_vec4 vec, skf_mat4 mat);
+skf_vec3 skf_vec3_mat4_transform(skf_vec3 vec, skf_mat4 mat);
 
 skf_mat4 skf_mat4_sub(skf_mat4 left, skf_mat4 right);
 skf_mat4 skf_mat4_mul(skf_mat4 left, skf_mat4 right);
@@ -83,6 +99,7 @@ skf_mat4 skf_mat4_rotate_y(f32 angle);
 skf_mat4 skf_mat4_rotate_z(f32 angle);
 
 skf_mat4 skf_mat4_view_simple(skf_vec3 position, skf_quat rotation);
+skf_mat4 skf_mat4_view_target(skf_vec3 position, skf_vec3 target, skf_vec3 up);
 
 skf_mat4 skf_mat4_orthographic(f32 left, f32 right, f32 bottom, f32 top, f32 near, f32 far);
 skf_mat4 skf_mat4_projection(f32 fov, f32 aspect, f32 near, f32 far);
