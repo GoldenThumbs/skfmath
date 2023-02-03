@@ -1,0 +1,10 @@
+*.exe
+*.obj
+*.pdb
+*.dll
+*.lib
+*.sln
+*.vcxproj
+/build/
+/bin/
+/.vscode/

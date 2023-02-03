@@ -1,3 +1,8 @@
+// --- THIS FILE COMES FROM THE SKFMATH LIBRARY ---
+//     MIT License
+//     Copyright (c) 2023 Samuel Skiff
+// ------------------------------------------------
+
 #pragma once
 
 #include "skfmath_structs.h"
@@ -5,7 +10,6 @@
 // ---- Float Functions ----
 
 f32 skf_sign(f32 val);
-f32 skf_abs(f32 val);
 f32 skf_clamp(f32 val, f32 min, f32 max);
 f32 skf_lerp(f32 left, f32 right, f32 amount);
 
@@ -19,23 +23,23 @@ skf_vec2 skf_vec2_normalize(skf_vec2 vec);
 
 static inline skf_vec3 skf_vec3_right()
 {
-   return (skf_vec3){ 1, 0, 0 };
+   return CREATE_C_TYPE(skf_vec3){ 1, 0, 0 };
 }
 static inline skf_vec3 skf_vec3_up()
 {
-   return (skf_vec3){ 0, 1, 0 };
+   return CREATE_C_TYPE(skf_vec3){ 0, 1, 0 };
 }
 static inline skf_vec3 skf_vec3_back()
 {
-   return (skf_vec3){ 0, 0, 1 };
+   return CREATE_C_TYPE(skf_vec3){ 0, 0, 1 };
 }
 static inline skf_vec3 skf_vec3_one()
 {
-   return (skf_vec3){ 1, 1, 1 };
+   return CREATE_C_TYPE(skf_vec3){ 1, 1, 1 };
 }
 static inline skf_vec3 skf_vec3_zero()
 {
-   return (skf_vec3){ 0, 0, 0 };
+   return CREATE_C_TYPE(skf_vec3){ 0, 0, 0 };
 }
 
 f32 skf_vec3_dot(skf_vec3 left, skf_vec3 right);
@@ -51,6 +55,7 @@ skf_vec3 skf_vec3_div(skf_vec3 left, skf_vec3 right);
 skf_vec3 skf_vec3_rcp(skf_vec3 vec);
 skf_vec3 skf_vec3_mul_f32(skf_vec3 vec, f32 scalar);
 skf_vec3 skf_vec3_lerp(skf_vec3 left, skf_vec3 right, f32 amount);
+skf_vec3 skf_vec3_slerp(skf_vec3 left, skf_vec3 right, f32 amount);
 
 // ---- Vector4 Functions ----
 
@@ -63,7 +68,7 @@ skf_vec4 skf_vec4_sub(skf_vec4 left, skf_vec4 right);
 
 static inline skf_quat skf_quat_identity()
 {
-   return (skf_quat){ 0, 0, 0, 1 };
+   return CREATE_C_TYPE(skf_quat){ 0, 0, 0, 1 };
 }
 
 skf_vec3 skf_vec3_quat_rotate(skf_vec3 vec, skf_quat rot);
@@ -75,7 +80,7 @@ skf_quat skf_quat_mul(skf_quat left, skf_quat right);
 
 static inline skf_mat4 skf_mat4_identity()
 {
-   return (skf_mat4) {
+   return CREATE_C_TYPE(skf_mat4) {
       1, 0, 0, 0,
       0, 1, 0, 0,
       0, 0, 1, 0,
@@ -99,7 +104,7 @@ skf_mat4 skf_mat4_rotate_y(f32 angle);
 skf_mat4 skf_mat4_rotate_z(f32 angle);
 
 skf_mat4 skf_mat4_view_simple(skf_vec3 position, skf_quat rotation);
-skf_mat4 skf_mat4_view_target(skf_vec3 position, skf_vec3 target, skf_vec3 up);
+skf_mat4 skf_mat4_view_target(skf_vec3 position, skf_vec3 target, f32 roll);
 
 skf_mat4 skf_mat4_orthographic(f32 left, f32 right, f32 bottom, f32 top, f32 near, f32 far);
 skf_mat4 skf_mat4_projection(f32 fov, f32 aspect, f32 near, f32 far);
