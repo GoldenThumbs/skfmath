@@ -9,9 +9,13 @@ set(files_include
 "skfmath.h" 
 "skfmath_int.h")
 
+set(full_inc)
+
 foreach(file_inc IN ITEMS ${files_include})
 
-   set(tmp_inc "${CMAKE_CURRENT_SOURCE_DIR}/${file_inc}")
-   set(skfmath_inc "${skfmath_inc}${tmp_inc}" PARENT_SCOPE)
+   set(tmp_inc "${CMAKE_CURRENT_SOURCE_DIR}/${file_inc};")
+   set(full_inc "${full_inc}${tmp_inc}")
 
 endforeach()
+
+set(skfmath_inc ${full_inc} PARENT_SCOPE)

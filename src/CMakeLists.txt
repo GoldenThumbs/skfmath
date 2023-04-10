@@ -7,9 +7,13 @@ set(files_source
 "skfmath.c" 
 "skfmath_int.c")
 
+set(full_src)
+
 foreach(file_src IN ITEMS ${files_source})
 
-   set(tmp_src "${CMAKE_CURRENT_SOURCE_DIR}/${file_src}")
-   set(skfmath_src "${skfmath_src}${tmp_src}" PARENT_SCOPE)
+   set(tmp_src "${CMAKE_CURRENT_SOURCE_DIR}/${file_src};")
+   set(full_src "${full_src}${tmp_src}")
 
 endforeach()
+
+set(skfmath_src ${full_src} PARENT_SCOPE)
