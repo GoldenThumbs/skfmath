@@ -6,5 +6,11 @@
 cmake_minimum_required(VERSION 3.0)
 project(skfmath)
 
-add_library(skfmath STATIC "src/skfmath.c" "src/skfmath_int.c" "inc/skfmath_structs.h" "inc/skfmath_helpers.h" "inc/skfmath.h" "inc/skfmath_int.h")
+set(skfmath_inc)
+set(skfmath_src)
+
+add_subdirectory("inc")
+add_subdirectory("src")
+
+add_library(skfmath STATIC ${skfmath_inc} ${skfmath_src})
 target_include_directories(skfmath PUBLIC "inc")

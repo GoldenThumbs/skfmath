@@ -15,6 +15,16 @@ f32 skf_lerp(f32 left, f32 right, f32 amount);
 
 // ---- Vector2 Functions ----
 
+static inline skf_vec2 skf_vec2_right()
+{
+   return CREATE_C_TYPE(skf_vec2){ 1, 0 };
+}
+
+static inline skf_vec2 skf_vec2_up()
+{
+   return CREATE_C_TYPE(skf_vec2){ 0, 1 };
+}
+
 f32 skf_vec2_dot(skf_vec2 left, skf_vec2 right);
 f32 skf_vec2_len(skf_vec2 vec);
 skf_vec2 skf_vec2_normalize(skf_vec2 vec);
